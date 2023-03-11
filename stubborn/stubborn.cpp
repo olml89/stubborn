@@ -50,7 +50,6 @@ bool Stubborn::start(QApplication& app)
 {
     // If the target program is already running, give to the user a chance to terminate it. This way we manually stop
     // target processes running forever if Stubborn is ended somehow, without using the Windows task manager
-    /*
     if (this->program.isAlreadyRunning() && this->showPermissionToKillPendingProcessMessage().exec() == QMessageBox::Yes) {
         this->program.stop();
     }
@@ -65,8 +64,6 @@ bool Stubborn::start(QApplication& app)
 
         this->program.start();
     }
-    */
-    //this->program.start();
 
     // Attach Stubborn to the Windows registry to start with the system, so whenever the computer is rebooted
     // Stubborn starts with it
@@ -81,6 +78,6 @@ bool Stubborn::start(QApplication& app)
         program.keepAwake();
     });
 
-    //timer->start(this->config.getInterval() * 1000);
+    timer->start(this->config.getInterval() * 1000);
     return true;
 }
